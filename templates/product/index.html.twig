@@ -3,10 +3,23 @@
 {% block title %}Hello ProductController!{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center">All Products</h1>
-            <hr>
-        </div>
+<div class="row">
+    <div class="col">
+        <h1 class="text-center">All Products</h1>
+        <hr>
     </div>
+</div>
+<div class="row">
+    {% for product in products %}
+        <div class="col-2 card" style="width: 18rem;">
+            <img class="card-img-top" src="{{ product.picture }}" style="max-width: 320px">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.price / 100 }} Credits</p>
+                <a href="#" class="btn btn-primary">Details</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
 {% endblock %}
