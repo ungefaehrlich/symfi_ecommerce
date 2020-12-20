@@ -1,0 +1,20 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:13-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: main
+      POSTGRES_PASSWORD: main
+      POSTGRES_DB: main
+
+  pgadmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    ports:
+      - 5555:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: dev@dev.dev
+      PGADMIN_DEFAULT_PASSWORD: qqqq
