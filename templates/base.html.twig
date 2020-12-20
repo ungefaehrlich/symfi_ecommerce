@@ -8,7 +8,15 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
+{% if app.request.hasPreviousSession %}
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
 <div class="container-fluid">
+
     {% block body %}{% endblock %}
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

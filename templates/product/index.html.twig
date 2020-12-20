@@ -9,6 +9,12 @@
         <hr>
     </div>
 </div>
+    <div class="row">
+        <div class="col">
+            <a href="{{ url('welcome') }}">Back</a>
+            <hr>
+        </div>
+    </div>
 <div class="row">
     {% for product in products %}
         <div class="col-2 card" style="width: 18rem;">
@@ -16,7 +22,7 @@
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">{{ product.price / 100 }} Credits</p>
-                <a href="#" class="btn btn-primary">Details</a>
+                <a href="{{ url('product.detail', {product:  product.id}) }}" class="btn btn-primary">Details</a>
             </div>
         </div>
     {% endfor %}

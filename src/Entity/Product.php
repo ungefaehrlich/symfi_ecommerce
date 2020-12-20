@@ -42,6 +42,11 @@ class Product
      */
     private $stock;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_offer;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +108,18 @@ class Product
     public function setStock(int $stock): self
     {
         $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getIsOffer(): ?bool
+    {
+        return $this->is_offer;
+    }
+
+    public function setIsOffer(bool $is_offer): self
+    {
+        $this->is_offer = $is_offer;
 
         return $this;
     }

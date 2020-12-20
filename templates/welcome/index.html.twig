@@ -12,9 +12,20 @@
 
     <div class="row">
         <h2>Offers!</h2>
-        <hr>
-
     </div>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-2 card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ product.picture }}" style="max-width: 320px">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price / 100 }} Credits</p>
+                    <a href="{{ url('product.detail', {product:  product.id}) }}" class="btn btn-primary">Details</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <hr>
     <div class="row">
         <h2><a href="/products" class="btn btn-primary btn-lg">See all products</a></h2>
     </div>
