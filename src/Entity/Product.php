@@ -4,9 +4,16 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ApiResource(
+ *     collectionOperations={"get"={"normalization_context"={"groups"="product:list"}}},
+ *     itemOperations={"get"={"normalization_context"={"groups"="product:item"}}},
+ *     paginationEnabled=false
+ * )
  */
 class Product
 {
@@ -14,36 +21,43 @@ class Product
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"product:list", "product:item"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=1024)
+     * @Groups({"product:list", "product:item"})
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"product:list", "product:item"})
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=1024)
+     * @Groups({"product:list", "product:item"})
      */
     private $picture;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"product:list", "product:item"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups({"product:list", "product:item"})
      */
     private $stock;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups({"product:list", "product:item"})
      */
     private $is_offer;
 
