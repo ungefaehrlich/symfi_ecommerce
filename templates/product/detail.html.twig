@@ -9,7 +9,7 @@
         <div class="col"><img src="{{ product.picture }}" alt=""></div>
         <div class="col">{{ product.description }}</div>
         <div class="col">
-            <p>Price: {{ product.price / 100 }} Credits </p>
+            <p>Price: {{ product.price | currency  }} Credits </p>
             <p><a href="{{ url('cart.add-product', {productId: product.id}) }}" class="btn btn-primary">Add to Cart</a>
             </p>
         </div>

@@ -9,7 +9,7 @@
             <img class="card-img-top" src="{{ product.picture }}" style="max-width: 320px">
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">{{ product.price / 100 }} Credits</p>
+                <p class="card-text">{{ product.price | currency }} Credits</p>
                 <a href="{{ url('product.detail', {product:  product.id}) }}" class="btn btn-primary">Details</a>
             </div>
         </div>

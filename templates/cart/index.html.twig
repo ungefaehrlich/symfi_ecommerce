@@ -21,14 +21,14 @@
             <tr>
                 <td>🗑️</td>
                 <td>{{ product.name }}</td>
-                <td>{{ product.price / 100 }} </td>
+                <td>{{ product.price | currency  }} </td>
                 <td>Credits</td>
             </tr>
         {% endfor %}
         <tr class="table-info">
             <td></td>
             <td><strong>Total</strong></td>
-            <td><strong>{{ total / 100}}</strong></td>
+            <td><strong>{{ total | currency }}</strong></td>
             <td>Credits</td>
 
         </tr>
