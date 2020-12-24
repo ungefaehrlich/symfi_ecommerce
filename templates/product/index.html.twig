@@ -1,20 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Hello ProductController!{% endblock %}
-
+{% block pageTitle %}All Products{% endblock %}
 {% block body %}
-<div class="row">
-    <div class="col">
-        <h1 class="text-center">All Products</h1>
-        <hr>
-    </div>
-</div>
-    <div class="row">
-        <div class="col">
-            <a href="{{ url('welcome') }}">Back</a>
-            <hr>
-        </div>
-    </div>
 <div class="row">
     {% for product in products %}
         <div class="col-2 card" style="width: 18rem;">

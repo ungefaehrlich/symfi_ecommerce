@@ -1,26 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductController!{% endblock %}
+{% block title %}{{ product.name }}{% endblock %}
+{% block pageTitle %}{{ product.name }}{% endblock %}
 
 {% block body %}
-    <div class="row">
-        <div class="col">
-            <h1 class="text-center">{{ product.name }}</h1>
-            <hr>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <a href="{{ url('product.index') }}">Back</a>
-            <hr>
-        </div>
-    </div>
+
     <div class="row">
         <div class="col"><img src="{{ product.picture }}" alt=""></div>
         <div class="col">{{ product.description }}</div>
         <div class="col">
             <p>Price: {{ product.price / 100 }} Credits </p>
-            <p><a href="{{ url('cart.add-product', {productId: product.id}) }}" class="btn btn-primary">Add to Cart</a></p>
+            <p><a href="{{ url('cart.add-product', {productId: product.id}) }}" class="btn btn-primary">Add to Cart</a>
+            </p>
         </div>
     </div>
 
