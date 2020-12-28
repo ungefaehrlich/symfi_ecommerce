@@ -27,12 +27,10 @@ final class Version20201224104853 extends AbstractMigration
         $this->addSql('CREATE TABLE "order" (id INT NOT NULL, shipping_address_id INT NOT NULL, invoice_address_id INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_F52993984D4CFF2B ON "order" (shipping_address_id)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_F5299398C6BDFEB ON "order" (invoice_address_id)');
-        $this->addSql('CREATE TABLE order_item (id INT NOT NULL, order_id_id INT NOT NULL, product_id INT NOT NULL, price INT NOT NULL, count INT NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE INDEX IDX_52EA1F09FCDAEAAA ON order_item (order_id_id)');
+        $this->addSql('CREATE TABLE order_item (id INT NOT NULL, product_id INT NOT NULL, price INT NOT NULL, count INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_52EA1F094584665A ON order_item (product_id)');
         $this->addSql('ALTER TABLE "order" ADD CONSTRAINT FK_F52993984D4CFF2B FOREIGN KEY (shipping_address_id) REFERENCES address (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE "order" ADD CONSTRAINT FK_F5299398C6BDFEB FOREIGN KEY (invoice_address_id) REFERENCES address (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
-        $this->addSql('ALTER TABLE order_item ADD CONSTRAINT FK_52EA1F09FCDAEAAA FOREIGN KEY (order_id_id) REFERENCES "order" (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE order_item ADD CONSTRAINT FK_52EA1F094584665A FOREIGN KEY (product_id) REFERENCES product (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
     }
 

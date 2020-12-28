@@ -4,12 +4,17 @@ namespace App\Entity;
 
 use App\Repository\AddressRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints;
 
 /**
  * @ORM\Entity(repositoryClass=AddressRepository::class)
  */
 class Address
 {
+
+    public const TYPE_SHIPPING = 'shipping';
+    public const TYPE_INVOICE = 'invoice';
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -29,31 +34,37 @@ class Address
 
     /**
      * @ORM\Column(type="string", length=1024)
+     * @Constraints\Length(min=2)
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=1024)
+     * @Constraints\Length(min=2)
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=1024)
+     * @Constraints\Length(min=3)
      */
     private $street;
 
     /**
      * @ORM\Column(type="string", length=1024)
+     * @Constraints\Length(min=3)
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Constraints\Length(min=3)
      */
     private $postcode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Constraints\Length(min=3)
      */
     private $country;
 

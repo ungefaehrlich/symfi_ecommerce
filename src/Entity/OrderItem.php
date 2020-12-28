@@ -18,12 +18,6 @@ class OrderItem
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderItems")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $orderId;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Product::class)
      * @ORM\JoinColumn(nullable=false)
      */
@@ -39,21 +33,14 @@ class OrderItem
      */
     private $count;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Order::class, inversedBy="orderItems",cascade={"persist"})
+     */
+    private $assigendOrder;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getOrderId(): ?Order
-    {
-        return $this->orderId;
-    }
-
-    public function setOrderId(?Order $orderId): self
-    {
-        $this->orderId = $orderId;
-
-        return $this;
     }
 
     public function getProduct(): ?Product
@@ -88,6 +75,18 @@ class OrderItem
     public function setCount(int $count): self
     {
         $this->count = $count;
+
+        return $this;
+    }
+
+    public function getAssigendOrder(): ?Order
+    {
+        return $this->assigendOrder;
+    }
+
+    public function setAssigendOrder(?Order $assigendOrder): self
+    {
+        $this->assigendOrder = $assigendOrder;
 
         return $this;
     }
